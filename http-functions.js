@@ -14,3 +14,5 @@ request.get('https://sytantris.github.io/http-examples/future.jpg')
        .on('finish', function (response) {
         console.log('Download Complete');
        })
+
+// relevant properties: login(for filename (user's name)), and avatar url (to download)
