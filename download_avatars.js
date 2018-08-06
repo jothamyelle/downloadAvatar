@@ -1,4 +1,5 @@
 var request = require('request');
+var secrets = require('./secrets');
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
@@ -7,15 +8,12 @@ var requestOptions = {
   path: '/http-examples/step5.html'
 };
 
-function printHTML (html) {
-  console.log(html);
-}
-
 function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
     headers: {
-      'User-Agent': 'request'
+      'User-Agent': 'request',
+      'Authorization' : secrets.GITHUB_TOKEN
     }
   };
 
