@@ -37,3 +37,17 @@ getRepoContributors(owner, repo, function(err, result) {
 
   console.log("Yay!");
 });
+
+function downloadImageByURL(url, filePath) {
+  var fs = require('fs');
+  request.get(url)
+  .on('error', function (err) {
+    throw err; 
+  })
+  .on('response', function (reponse) {
+    console.log("It worked!!");
+  })
+  .pipe(fs.createWriteStream(filePath))
+}
+
+downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg");
