@@ -32,10 +32,10 @@ getRepoContributors(owner, repo, function(err, result) {
   }
 
   for (element in result) {
-    console.log(result[element].avatar_url);
+    var filePath = "avatars/" + result[element].login + ".jpg";
+    var url = result[element].avatar_url;
+    downloadImageByURL(url, filePath);
   }
-
-  console.log("Yay!");
 });
 
 function downloadImageByURL(url, filePath) {
@@ -44,10 +44,5 @@ function downloadImageByURL(url, filePath) {
   .on('error', function (err) {
     throw err; 
   })
-  .on('response', function (reponse) {
-    console.log("It worked!!");
-  })
   .pipe(fs.createWriteStream(filePath))
 }
-
-downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg");
