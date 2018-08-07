@@ -11,11 +11,6 @@ if (!owner || !repo) {
 console.log('Welcome to the GitHub Avatar Downloader!');
 console.log("Downloading Avatars...");
 
-var requestOptions = {
-  host: 'sytantris.github.io',
-  path: '/http-examples/step5.html'
-};
-
 function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
