@@ -4,6 +4,7 @@ var secrets = require('./secrets');
 var fs = require('fs');
 require('dotenv').config();
 var env = process.env;
+// check if the access token is missing
 if(!env.GITHUB_TOKEN){
   console.log("The .env file is missing an access token.  Please add it to run this program correctly.");
   return;
@@ -100,5 +101,3 @@ fs.access('./.env', function(err, res, body) {
   });
 
 });
-
-
