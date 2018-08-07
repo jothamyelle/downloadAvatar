@@ -3,7 +3,13 @@ var secrets = require('./secrets');
 var owner = process.argv[2];
 var repo = process.argv[3];
 
+if (!owner || !repo) {
+  console.log("This application require two arguments.  Please enter a username and repository");
+  return;
+}
+
 console.log('Welcome to the GitHub Avatar Downloader!');
+console.log("Downloading Avatars...");
 
 var requestOptions = {
   host: 'sytantris.github.io',
@@ -36,6 +42,7 @@ getRepoContributors(owner, repo, function(err, result) {
     var url = result[element].avatar_url;
     downloadImageByURL(url, filePath);
   }
+  console.log("Successfully downloaded the avatars!");
 });
 
 function downloadImageByURL(url, filePath) {
