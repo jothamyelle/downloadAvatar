@@ -1,6 +1,9 @@
-// require request package and secrets
+// require request package, secrets and env
 var request = require('request');
 var secrets = require('./secrets');
+require('dotenv').config();
+var env = process.env;
+
 // store owner and repo arguments
 var owner = process.argv[2];
 var repo = process.argv[3];
@@ -26,7 +29,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
     headers: {
       'User-Agent': 'request',
-      'Authorization' : secrets.GITHUB_TOKEN
+      'Authorization' : env.GITHUB_TOKEN
     }
   };
 
